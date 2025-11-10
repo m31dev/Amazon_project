@@ -1,4 +1,4 @@
-
+let cont = document.querySelector(".content")
 const product = [
     {
         id:0,
@@ -75,9 +75,30 @@ const product = [
 
 ]
 
+renderData()
+
 function renderData(){
     let empt = ""
     product.forEach((element, index)=>{
-        empt += ``
+        empt += `<div class="prod">
+            <img src="images/athletic-cotton-socks-6-pairs.jpg" class="prod-img">
+            <div class="bot">
+            <p>Black and Gray Athletic Cotton Socks - 6 Pairs</p>
+            <img src="images/rating-45.png" class="rating">
+            <p class="prod-price">$10.90</p>
+           <select  id="select">
+                <option selected="" value="1">1</option>
+                 <option value="2">2</option>
+                 <option value="3">3</option>
+                 <option value="4">4</option>
+                 <option value="5">5</option>
+                 <option value="6">6</option>
+                 <option value="7">7</option>
+                 <option value="8">8</option>
+           </select>
+           </div>
+           <button>Add to Cart</button>
+        </div>`
     })
+    cont.innerHTML = empt;
 }
