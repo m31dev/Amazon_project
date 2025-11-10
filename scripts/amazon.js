@@ -72,11 +72,12 @@ const product = [
         reviews: 305,
         price: 28.99,
     },
-   
-   
-   
-
-
-
 
 ]
+
+function renderData(){
+    let empt = ""
+    product.forEach((element, index)=>{
+        empt += ``
+    })
+}
