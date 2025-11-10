@@ -107,12 +107,17 @@ input:focus{
     width: 45px;
     object-fit: contain;
 }
-.cart p{
+.cart div{
+    display: flex;
+    width:20px;
+    justify-content: center;
+    align-items: center;
     color: rgb(240, 136, 4);
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     position: absolute;
-    right: 53px;
+    right: 47px;
+    top:10px
 }
 
 .cart strong{
