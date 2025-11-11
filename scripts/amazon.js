@@ -72,20 +72,59 @@ const product = [
         reviews: 305,
         price: 28.99,
     },
+    {
+        id:9,
+        name:"Waterproof Knit Athletic Sneakers",
+        image:"images/knit-athletic-sneakers-gray.jpg",
+        rating:"images/rating-4.png",
+        reviews: 89,
+        price: 33.90,
+    },
+     {
+        id:10,
+        name:"Women's Chiffon Beachwear Cover Up",
+        image:"images/women-chiffon-beachwear-coverup-black.jpg",
+        rating:"images/rating-45.png",
+        reviews: 235,
+        price: 30.70,
+    },
+    {
+        id:10,
+        name:"Round Sunglasses",
+        image:"images/round-sunglasses-black.jpg",
+        rating:"images/rating-45.png",
+        reviews: 30,
+        price: 15.60,
+    },
+
 
 ]
+
+
+
+
+
+
+
+
 
 renderData()
 
 function renderData(){
     let empt = ""
     product.forEach((element, index)=>{
+        let {id,name,image,rating,reviews,price} = element;
         empt += `<div class="prod">
-            <img src="images/athletic-cotton-socks-6-pairs.jpg" class="prod-img">
+        <div class="img-cont">
+            <img src="${image}" class="prod-img">
+            </div>
             <div class="bot">
-            <p>Black and Gray Athletic Cotton Socks - 6 Pairs</p>
-            <img src="images/rating-45.png" class="rating">
-            <p class="prod-price">$10.90</p>
+            <p class="prod-name">${name}</p>
+            <div class="rr">
+            <img src="${rating}" class="rating">
+            <p class="reviews">${reviews}</p>
+            </div>
+            <p class="prod-price">$${price}</p>
            <select  id="select">
                 <option selected="" value="1">1</option>
                  <option value="2">2</option>
@@ -97,8 +136,43 @@ function renderData(){
                  <option value="8">8</option>
            </select>
            </div>
-           <button>Add to Cart</button>
+           <div class="alert">
+           
+           </div>
+           <button class="add-but">Add to Cart</button>
         </div>`
     })
     cont.innerHTML = empt;
+
+    let buts = document.querySelectorAll(".add-but")
+    buts.forEach((element,index)=>{
+        element.addEventListener("click",()=>addToCart(index))
+    })
+
+    let sel = document.querySelectorAll("#select")
+    sel.forEach((element)=>{
+        element.addEventListener('change',()=>selectQuantity(element))
+    })
+}
+
+function selectQuantity(data){
+    console.log(data[0].value)
+
+
+}
+
+ let sel = document.querySelectorAll("#select")
+    sel.forEach((element)=>{
+        element.addEventListener('change',()=>selectQuantity(element))
+    })
+selectQuantity(sel)
+
+function addToCart(index){
+    let div = document.querySelectorAll(".prod")
+    let adivs = div[index].querySelector(".alert")
+    adivs.innerHTML = `
+      <img src="images/checkmark.png" alt="success" width="18" />
+    <span style="color:green">Added</span>
+   `
+   setTimeout(()=> adivs.innerHTML = "",2000)
 }

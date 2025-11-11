@@ -34,5 +34,4 @@ This project focuses on improving core web development skills such as layout des
 ---
 
 ## 📸 Screenshots
-
-*(Add screenshots of your homepage, product section, and cart here)*  
+ 
