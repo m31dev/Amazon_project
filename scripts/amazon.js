@@ -150,13 +150,13 @@ function renderData(){
     })
 
     let sel = document.querySelectorAll("#select")
-    sel.forEach((element)=>{
-        element.addEventListener('change',()=>selectQuantity(element))
+    sel.forEach((element,index)=>{
+        console.log(element.value)
     })
 }
-
+//element.addEventListener('change',()=>selectQuantity(element))
 function selectQuantity(data){
-    console.log(data[0].value)
+    
 
 
 }
