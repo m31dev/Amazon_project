@@ -149,9 +149,11 @@ function renderData(){
         element.addEventListener("click",()=>addToCart(index))
     })
 
-    let sel = document.querySelectorAll("#select")
+    let sel = document.querySelectorAll("select")
     sel.forEach((element,index)=>{
-        console.log(element.value)
+        if(element[index].selected === ""){
+            
+        }
     })
 }
 //element.addEventListener('change',()=>selectQuantity(element))
