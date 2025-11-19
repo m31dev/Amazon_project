@@ -120,7 +120,7 @@ function renderData(){
             </div>
             <p class="prod-price">$${price}</p>
            <select  class="select-quant">
-                <option selected="" value="1">1</option>
+                <option selected value="1">1</option>
                  <option value="2">2</option>
                  <option value="3" >3</option>
                  <option value="4">4</option>
