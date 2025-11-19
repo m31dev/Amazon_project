@@ -102,12 +102,6 @@ const product = [
 
 
 
-
-
-
-
-
-
 renderData()
 
 function renderData(){
@@ -125,10 +119,10 @@ function renderData(){
             <p class="reviews">${reviews}</p>
             </div>
             <p class="prod-price">$${price}</p>
-           <select  id="select">
+           <select  class="select-quant">
                 <option selected="" value="1">1</option>
                  <option value="2">2</option>
-                 <option value="3">3</option>
+                 <option value="3" >3</option>
                  <option value="4">4</option>
                  <option value="5">5</option>
                  <option value="6">6</option>
@@ -149,29 +143,22 @@ function renderData(){
         element.addEventListener("click",()=>addToCart(index))
     })
 
-    let sel = document.querySelectorAll("select")
-    sel.forEach((element,index)=>{
-        if(element[index].selected === ""){
-            
-        }
-    })
-}
-//element.addEventListener('change',()=>selectQuantity(element))
-function selectQuantity(data){
     
-
-
 }
 
- let sel = document.querySelectorAll("#select")
-    sel.forEach((element)=>{
-        element.addEventListener('change',()=>selectQuantity(element))
-    })
-selectQuantity(sel)
 
 function addToCart(index){
+    let quant = document.querySelector(".cart-count")
     let div = document.querySelectorAll(".prod")
     let adivs = div[index].querySelector(".alert")
+    let selected = div[index].querySelector(".select-quant")
+    
+    selected = Number(selected.value)
+    let quantity = Number(quant.textContent)
+    quantity += selected;
+    quant.textContent = quantity;
+    console.log(quantity)
+    
     adivs.innerHTML = `
       <img src="images/checkmark.png" alt="success" width="18" />
     <span style="color:green">Added</span>
