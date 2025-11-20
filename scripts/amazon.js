@@ -30,7 +30,7 @@ function renderData(){
            <div class="alert">
            
            </div>
-           <button class="add-but" data-product-name="${name}">Add to Cart</button>
+           <button class="add-but" data-product-id="${id}">Add to Cart</button>
         </div>`
     })
     cont.innerHTML = empt;
@@ -53,11 +53,12 @@ function addToCart(index,but){
     let quantity = Number(quant.textContent)
     quantity += selected;
     quant.textContent = quantity;
-    const productName = but.dataset.productName;
+    const productId = but.dataset.productId;
+    
 
     let matchingItem;
     cart.forEach((item)=>{
-        if(productName === item.productName){
+        if(productId === item.productId){
             matchingItem = item;
         }
     })
@@ -67,7 +68,7 @@ function addToCart(index,but){
     }
     else{
         cart.push({
-            productName: productName,
+            productId: productId,
             quantity:selected
         })
     }
