@@ -48,11 +48,7 @@ function addToCart(index,but){
     let quant = document.querySelector(".cart-count")
     let div = document.querySelectorAll(".prod")
     let adivs = div[index].querySelector(".alert")
-    let selected = div[index].querySelector(".select-quant")
-    selected = Number(selected.value)
-    let quantity = Number(quant.textContent)
-    quantity += selected;
-    quant.textContent = quantity;
+    let selected = Number(div[index].querySelector(".select-quant").value)
     const productId = but.dataset.productId;
     
 
@@ -73,6 +69,11 @@ function addToCart(index,but){
         })
     }
 
+    let cartQuantity = 0;
+    cart.forEach((item)=>{
+        cartQuantity += item.quantity;
+    })
+    quant.innerHTML = cartQuantity
     console.log(cart)
    
     
