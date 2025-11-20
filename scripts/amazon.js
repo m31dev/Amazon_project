@@ -30,31 +30,50 @@ function renderData(){
            <div class="alert">
            
            </div>
-           <button class="add-but">Add to Cart</button>
+           <button class="add-but" data-product-name="${name}">Add to Cart</button>
         </div>`
     })
     cont.innerHTML = empt;
 
     let buts = document.querySelectorAll(".add-but")
     buts.forEach((element,index)=>{
-        element.addEventListener("click",()=>addToCart(index))
+        element.addEventListener("click",()=>addToCart(index,element))
     })
 
     
 }
 
 
-function addToCart(index){
+function addToCart(index,but){
     let quant = document.querySelector(".cart-count")
     let div = document.querySelectorAll(".prod")
     let adivs = div[index].querySelector(".alert")
     let selected = div[index].querySelector(".select-quant")
-    
     selected = Number(selected.value)
     let quantity = Number(quant.textContent)
     quantity += selected;
     quant.textContent = quantity;
-    console.log(quantity)
+    const productName = but.dataset.productName;
+
+    let matchingItem;
+    cart.forEach((item)=>{
+        if(productName === item.productName){
+            matchingItem = item;
+        }
+    })
+
+    if(matchingItem){
+        matchingItem.quantity += selected;
+    }
+    else{
+        cart.push({
+            productName: productName,
+            quantity:selected
+        })
+    }
+
+    console.log(cart)
+   
     
     adivs.innerHTML = `
       <img src="images/checkmark.png" alt="success" width="18" />
