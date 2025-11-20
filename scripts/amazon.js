@@ -7,7 +7,7 @@ renderData()
 function renderData(){
     let empt = ""
     product.forEach((element, index)=>{
-        let {id,name,image,rating,reviews,price} = element;
+        let {id,name,image,rating,count,price} = element;
         empt += `<div class="prod">
         <div class="img-cont">
             <img src="${image}" class="prod-img">
@@ -16,7 +16,7 @@ function renderData(){
             <p class="prod-name">${name}</p>
             <div class="rr">
             <img src="images/rating-${rating.stars*10}.png" class="rating">
-            <p class="reviews">${reviews}</p>
+            <p class="reviews">${rating.count}</p>
             </div>
             <p class="prod-price">$${(price/100).toFixed(2)}</p>
            <select  class="select-quant">
@@ -40,7 +40,12 @@ function renderData(){
 
     let buts = document.querySelectorAll(".add-but")
     buts.forEach((element,index)=>{
-        element.addEventListener("click",()=>addToCart(index,element))
+        element.addEventListener("click",()=>{
+            addToCart(index,element)
+            updateCart()
+        }
+    
+    )
     })
 
     
@@ -48,7 +53,6 @@ function renderData(){
 
 
 function addToCart(index,but){
-    let quant = document.querySelector(".cart-count")
     let div = document.querySelectorAll(".prod")
     let adivs = div[index].querySelector(".alert")
     let selected = Number(div[index].querySelector(".select-quant").value)
@@ -71,14 +75,6 @@ function addToCart(index,but){
             quantity:selected
         })
     }
-
-    let cartQuantity = 0;
-    cart.forEach((item)=>{
-        cartQuantity += item.quantity;
-    })
-    quant.innerHTML = cartQuantity
-    console.log(cart)
-   
     
     adivs.innerHTML = `
       <img src="images/checkmark.png" alt="success" width="18" />
@@ -86,3 +82,14 @@ function addToCart(index,but){
    `
    setTimeout(()=> adivs.innerHTML = "",2000)
 }
+
+function updateCart(){
+    let quant = document.querySelector(".cart-count")
+    let cartQuantity = 0;
+        cart.forEach((item)=>{
+            cartQuantity += item.quantity;
+        })
+        quant.innerHTML = cartQuantity
+        console.log(cart)
+}
+        

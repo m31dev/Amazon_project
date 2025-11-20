@@ -1,0 +1,144 @@
+body{
+   font-family: Arial, Helvetica, sans-serif;
+   margin: 0;
+}
+
+header{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 200px 20px 200px;
+}
+.logo{
+    width:120px;
+}
+.lock{
+    width: 20px;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 100px 200px 100px 200px;
+    gap:20px;
+    align-items: start;
+}
+
+.main button{
+    padding: 15px 30px 15px 30px;
+    background-color: rgba(247, 202, 0,1);
+    border:none;
+    border-radius:5px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+
+
+.main button:hover{
+     background-color:rgba(247, 202, 0,0.5);
+}
+
+.order-summary{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    padding: 20px;
+    width:300px;
+    height: 300px;
+    border-radius: 5px;
+    gap: 10px;
+}
+
+.order-summary button{
+    padding: 15px 30px 15px 30px;
+    background-color: rgba(247, 202, 0,1);
+    border:none;
+    border-radius:5px;
+    width: 100%;
+    font-weight:500;
+}
+
+.order-summary div{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    justify-content: space-between;
+    margin:0;
+
+    p{
+    margin:0;
+    font-size: 16px;
+    color:rgb(63, 63, 63)
+}
+    
+}
+
+.info{
+    p{
+         font-weight: 600;
+         color: red;
+    }
+   
+    
+}
+
+span{
+    color:rgb(23, 162, 204);
+}
+hr{
+   color:gray;
+   width:100%
+}
+.items{
+    flex:1;
+    padding:10px;
+}
+
+
+
+/*ITEM*/
+.itm{
+    border:1px solid gray;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.itm img{
+    object-fit: contain;
+    width:120px;
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    gap: 30px;
+}
+
+.del-optn{
+    display: flex;
+    flex-direction: column;
+    gap:10px
+    
+}
+
+.optn{
+    display: flex;
+    flex-direction: row;
+    gap:10px
+}
+
+input{
+    width:18px
+}
+.optn p{
+    margin:0;
+}
+
+.date{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

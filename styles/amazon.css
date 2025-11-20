@@ -94,6 +94,7 @@ input:focus{
     height: 32px;
     flex-direction: row;
     align-items: flex-end;
+    text-decoration: none;
     padding: 10px;
     position: relative;
     border-radius: 4px;
