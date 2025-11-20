@@ -1,4 +1,4 @@
-const product = [
+export const product = [
     {
         id:0,
         name:"Black and Gray Athletic Cotton Socks - 6 Pairs",

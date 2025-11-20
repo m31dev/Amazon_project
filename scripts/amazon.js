@@ -1,3 +1,6 @@
+import { cart } from "../data/cart.js"
+import {product} from "../data/product.js"
+
 let cont = document.querySelector(".content")
 renderData()
 
