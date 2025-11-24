@@ -1,22 +1,33 @@
 import { cart } from "../data/cart.js";
+import {product} from "../data/product.js";
 let itemContainer = document.querySelector(".items")
 
 renderItems()
 function renderItems(){
     let empt = ""
     cart.forEach((item)=>{
-        let {productId, quantity} = item;
+        //Get the id of each item in the cart
+        const itemId = item.productId;
+
+        //Compare id of item in cart with products id
+        let matchingProduct;
+        product.forEach((prod)=>{
+            if(prod.id === itemId){
+                matchingProduct = prod;
+            }
+        })
+            console.log(matchingProduct)
         empt+=`
          <div class="itm">
             <p class="d-date">Delivery date: Tuesday, June 21</p>
             <div class="content">
-                <img src="images/adults-plain-cotton-tshirt-2-pack-teal.jpg">
+                <img src="${matchingProduct.image}">
                 <div class="details">
                     <p class="name">
-                        Adults Plain Cotton T-Shirt - 2 Pack
+                       ${matchingProduct.name}
                     </p>
-                    <p class="price">$7.99</p>
-                    <p class="quantity"> Quantity:${quantity} <span class="bt">Update</span> <span class="bt">Delete</span></p>
+                    <p class="price">$${matchingProduct.price/100}</p>
+                    <p class="quantity"> Quantity:${item.quantity} <span class="bt">Update</span> <span class="bt">Delete</span></p>
                 </div>
 
                 <div class="del-optn">
