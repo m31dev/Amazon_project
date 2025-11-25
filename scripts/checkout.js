@@ -1,4 +1,4 @@
-import { cart } from "../data/cart.js";
+import { cart, removeItem} from "../data/cart.js";
 import {product} from "../data/product.js";
 import { formatCurrency } from "../utils/money.js";
 let itemContainer = document.querySelector(".items")
@@ -28,7 +28,7 @@ function renderItems(){
                        ${matchingProduct.name}
                     </p>
                     <p class="price">$${formatCurrency(matchingProduct.price)}</p>
-                    <p class="quantity"> Quantity:${item.quantity} <span class="bt">Update</span> <span class="bt">Delete</span></p>
+                    <p class="quantity"> Quantity:${item.quantity} <span class="bt">Update</span> <span class="bt" id="delete" data-product-id ="${matchingProduct.id}">Delete</span></p>
                 </div>
 
                 <div class="del-optn">
@@ -64,5 +64,15 @@ function renderItems(){
     })
 
     itemContainer.innerHTML = empt;
+    const del = document.querySelectorAll("#delete")
+    del.forEach((link)=>{
+        link.addEventListener("click",()=>{
+           const prodId = link.dataset.productId;
+           removeItem(prodId)
+           console.log(cart)
+        })
+        
+    })
+    
 }
 
