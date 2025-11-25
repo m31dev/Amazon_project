@@ -1,5 +1,6 @@
 import { cart } from "../data/cart.js";
 import {product} from "../data/product.js";
+import { formatCurrency } from "../utils/money.js";
 let itemContainer = document.querySelector(".items")
 
 renderItems()
@@ -26,7 +27,7 @@ function renderItems(){
                     <p class="name">
                        ${matchingProduct.name}
                     </p>
-                    <p class="price">$${matchingProduct.price/100}</p>
+                    <p class="price">$${formatCurrency(matchingProduct.price)}</p>
                     <p class="quantity"> Quantity:${item.quantity} <span class="bt">Update</span> <span class="bt">Delete</span></p>
                 </div>
 

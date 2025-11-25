@@ -1,5 +1,6 @@
 import { cart } from "../data/cart.js"
 import {product} from "../data/product.js"
+import { formatCurrency } from "../utils/money.js"
 
 let cont = document.querySelector(".content")
 renderData()
@@ -18,7 +19,7 @@ function renderData(){
             <img src="images/rating-${rating.stars*10}.png" class="rating">
             <p class="reviews">${rating.count}</p>
             </div>
-            <p class="prod-price">$${(price/100).toFixed(2)}</p>
+            <p class="prod-price">$${formatCurrency(price)}</p>
            <select  class="select-quant">
                 <option selected value="1">1</option>
                  <option value="2">2</option>
