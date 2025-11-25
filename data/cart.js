@@ -10,14 +10,12 @@ export let cart = [
     }
 ]
 
-export function removeItem(productId){
+export function removeItem(prodId){
     const newCart = [];
-
     cart.forEach((cartItem)=>{
-        if(cartItem.productId = productId){
+        if(cartItem.productId !== prodId){
             newCart.push(cartItem)
         }
     })
-
     cart = newCart;
 }

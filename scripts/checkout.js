@@ -64,15 +64,16 @@ function renderItems(){
     })
 
     itemContainer.innerHTML = empt;
-    const del = document.querySelectorAll("#delete")
-    del.forEach((link)=>{
+    
+    const delBut = document.querySelectorAll("#delete")
+    delBut.forEach((link)=>{
         link.addEventListener("click",()=>{
-           const prodId = link.dataset.productId;
-           removeItem(prodId)
-           console.log(cart)
+            const productId = Number(link.dataset.productId);
+            removeItem(productId)
+            console.log(cart)
         })
-        
     })
+     
     
 }
 
