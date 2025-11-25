@@ -3,7 +3,9 @@ import {product} from "../data/product.js";
 import { formatCurrency } from "../utils/money.js";
 let itemContainer = document.querySelector(".items")
 
+
 renderItems()
+
 function renderItems(){
     let empt = ""
     cart.forEach((item)=>{
@@ -17,9 +19,9 @@ function renderItems(){
             }
        })
 
-       console.log(matchingProduct)
+      
         empt+=`
-         <div class="itm">
+         <div class="itm  item-${matchingProduct.id}">
             <p class="d-date">Delivery date: Tuesday, June 21</p>
             <div class="content">
                 <img src="${matchingProduct.image}">
@@ -62,14 +64,16 @@ function renderItems(){
         `
         
     })
-
-    itemContainer.innerHTML = empt;
+         itemContainer.innerHTML = empt;
+ 
     
     const delBut = document.querySelectorAll("#delete")
     delBut.forEach((link)=>{
         link.addEventListener("click",()=>{
             const productId = Number(link.dataset.productId);
             removeItem(productId)
+
+           const ite = document.querySelector(`.item-${productId}`).remove()
             console.log(cart)
         })
     })
