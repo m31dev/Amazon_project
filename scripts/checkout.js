@@ -34,7 +34,7 @@ function renderItems(){
                 <div class="del-optn">
                     <p class="del-title">Choose a delivery option</p>
                     <div class="optn">
-                        <input type="radio" name="date">
+                        <input type="radio" name="${item.productId}">
                         <div class="date">
                             <p class="dt">Monday December 1</p>
                             <p class="sc">FREE Shipping</p>
@@ -42,7 +42,7 @@ function renderItems(){
                     </div>
 
                     <div class="optn">
-                        <input type="radio" name="date">
+                        <input type="radio" name="${item.productId}">
                         <div class="date">
                             <p class="dt">Monday December 1</p>
                             <p class="sc">$4.99 - Shipping</p>
@@ -50,7 +50,7 @@ function renderItems(){
                     </div>
 
                     <div class="optn">
-                        <input type="radio" name="date">
+                        <input type="radio" name="${matchingProduct.productId}">
                         <div class="date">
                             <p class="dt">Monday December 1</p>
                             <p class="sc">$9.99 - Shipping</p>
