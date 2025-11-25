@@ -64,7 +64,8 @@ function renderItems(){
         `
         
     })
-         itemContainer.innerHTML = empt;
+
+    itemContainer.innerHTML = empt;
  
     
     const delBut = document.querySelectorAll("#delete")
@@ -73,7 +74,7 @@ function renderItems(){
             const productId = Number(link.dataset.productId);
             removeItem(productId)
 
-           const ite = document.querySelector(`.item-${productId}`).remove()
+           document.querySelector(`.item-${productId}`).remove()
             console.log(cart)
         })
     })

@@ -1,8 +1,10 @@
-import { cart } from "../data/cart.js"
+import { cart,saveToStorage } from "../data/cart.js"
 import {product} from "../data/product.js"
 import { formatCurrency } from "../utils/money.js"
 
 let cont = document.querySelector(".content")
+let quant = document.querySelector(".cart-count")
+
 renderData()
 
 function renderData(){
@@ -43,7 +45,7 @@ function renderData(){
     buts.forEach((element,index)=>{
         element.addEventListener("click",()=>{
             addToCart(index,element)
-            updateCart()
+             updateCart()
         }
     
     )
@@ -57,7 +59,7 @@ function addToCart(index,but){
     let div = document.querySelectorAll(".prod")
     let adivs = div[index].querySelector(".alert")
     let selected = Number(div[index].querySelector(".select-quant").value)
-    const productId = but.dataset.productId;
+    const productId = Number(but.dataset.productId);
     
 
     let matchingItem;
@@ -76,21 +78,21 @@ function addToCart(index,but){
             quantity:selected
         })
     }
+    saveToStorage()
     
     adivs.innerHTML = `
       <img src="images/checkmark.png" alt="success" width="18" />
     <span style="color:green">Added</span>
    `
    setTimeout(()=> adivs.innerHTML = "",2000)
+
 }
 
 function updateCart(){
-    let quant = document.querySelector(".cart-count")
     let cartQuantity = 0;
         cart.forEach((item)=>{
             cartQuantity += item.quantity;
         })
-        quant.innerHTML = cartQuantity
         console.log(cart)
+        quant.innerHTML = cartQuantity
 }
-        
