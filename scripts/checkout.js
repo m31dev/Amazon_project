@@ -7,16 +7,16 @@ function renderItems(){
     let empt = ""
     cart.forEach((item)=>{
         //Get the id of each item in the cart
-        const itemId = item.productId;
-
-        //Compare id of item in cart with products id
+       const itemId = item.productId;
         let matchingProduct;
-        product.forEach((prod)=>{
-            if(prod.id === itemId){
-                matchingProduct = prod;
+       product.forEach((prod)=>{
+        //check if id in cart matches id in object in prooduct array
+            if(itemId === prod.id){
+                matchingProduct = prod
             }
-        })
-            console.log(matchingProduct)
+       })
+
+       console.log(matchingProduct)
         empt+=`
          <div class="itm">
             <p class="d-date">Delivery date: Tuesday, June 21</p>
