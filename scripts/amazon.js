@@ -76,7 +76,8 @@ function addToCart(index,but){
     else{
         cart.push({
             productId: productId,
-            quantity:selected
+            quantity:selected,
+            deliveryOptionId:'0'
         })
     }
     saveToStorage()

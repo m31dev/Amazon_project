@@ -2,12 +2,14 @@ export let cart = JSON.parse(localStorage.getItem('cart')) ||
 [
     {
         productId:0,
-        quantity:2
+        quantity:2,
+        deliveryOptionId:'0'
     },
     
     {
         productId:1,
-        quantity:1
+        quantity:1,
+        deliveryOptionId:'1'
     }
 ]
 
