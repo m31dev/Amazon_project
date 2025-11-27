@@ -91,14 +91,6 @@ function renderItems(){
     })
 
 
-    const rad =  document.querySelectorAll('input');
-    let da = document.querySelectorAll('dt')
-    rad.forEach((rad)=>{
-        if(rad.checked){
-            da.textContent = rad.value;
-        }
-    })
-     
     
 }
 
