@@ -4,6 +4,10 @@ import { formatCurrency } from "../utils/money.js";
 let itemContainer = document.querySelector(".items")
 let tot = document.querySelector("#total");
 
+const today = dayjs()
+const seven = today.add(7,"days").format('dddd MMMM D');
+const three = today.add(3,"days").format('dddd MMMM D');
+const four = today.add(4,'days').format('dddd MMMM D');
 
 let quantity = 0;
 cart.forEach((item)=>{
@@ -29,7 +33,7 @@ function renderItems(){
       
         empt+=`
          <div class="itm  item-${matchingProduct.id}">
-            <p class="d-date">Delivery date: Tuesday, June 21</p>
+            <p class="d-date">Delivery date:</p>
             <div class="content">
                 <img src="${matchingProduct.image}">
                 <div class="details">
@@ -43,7 +47,7 @@ function renderItems(){
                 <div class="del-optn">
                     <p class="del-title">Choose a delivery option</p>
                     <div class="optn">
-                        <input type="radio" name="${item.productId}">
+                        <input type="radio" name="${item.productId}" value="${seven}" checked>
                         <div class="date">
                             <p class="dt">Monday December 1</p>
                             <p class="sc">FREE Shipping</p>
@@ -51,7 +55,7 @@ function renderItems(){
                     </div>
 
                     <div class="optn">
-                        <input type="radio" name="${item.productId}">
+                        <input type="radio" name="${item.productId}" value="${three}">
                         <div class="date">
                             <p class="dt">Monday December 1</p>
                             <p class="sc">$4.99 - Shipping</p>
@@ -59,7 +63,7 @@ function renderItems(){
                     </div>
 
                     <div class="optn">
-                        <input type="radio" name="${matchingProduct.productId}">
+                        <input type="radio" name="${item.productId}" value="${four}">
                         <div class="date">
                             <p class="dt">Monday December 1</p>
                             <p class="sc">$9.99 - Shipping</p>
@@ -84,6 +88,15 @@ function renderItems(){
            document.querySelector(`.item-${productId}`).remove()
             console.log(cart)
         })
+    })
+
+
+    const rad =  document.querySelectorAll('input');
+    let da = document.querySelectorAll('dt')
+    rad.forEach((rad)=>{
+        if(rad.checked){
+            da.textContent = rad.value;
+        }
     })
      
     
