@@ -1,14 +1,12 @@
 import { cart, removeItem} from "../data/cart.js";
 import {product} from "../data/product.js";
 import { formatCurrency } from "../utils/money.js";
+import { deliveryOption } from "../data/deliveryOptions.js";
+import dayjs from "../utils/date.js";
 
 let itemContainer = document.querySelector(".items")
 let tot = document.querySelector("#total");
 
-const today = dayjs()
-const seven = today.add(7,"days").format('dddd MMMM D');
-const three = today.add(3,"days").format('dddd MMMM D');
-const four = today.add(4,'days').format('dddd MMMM D');
 
 let quantity = 0;
 cart.forEach((item)=>{
@@ -47,29 +45,7 @@ function renderItems(){
 
                 <div class="del-optn">
                     <p class="del-title">Choose a delivery option</p>
-                    <div class="optn">
-                        <input type="radio" name="${item.productId}" value="${seven}" checked>
-                        <div class="date">
-                            <p class="dt">Monday December 1</p>
-                            <p class="sc">FREE Shipping</p>
-                        </div>
-                    </div>
-
-                    <div class="optn">
-                        <input type="radio" name="${item.productId}" value="${three}">
-                        <div class="date">
-                            <p class="dt">Monday December 1</p>
-                            <p class="sc">$4.99 - Shipping</p>
-                        </div>
-                    </div>
-
-                    <div class="optn">
-                        <input type="radio" name="${item.productId}" value="${four}">
-                        <div class="date">
-                            <p class="dt">Monday December 1</p>
-                            <p class="sc">$9.99 - Shipping</p>
-                        </div>
-                    </div>
+                    ${delOptionHTML(matchingProduct)}
                 </div>
             </div>
         </div>
@@ -91,6 +67,27 @@ function renderItems(){
         })
     })
 
+    function delOptionHTML(matchingProduct){
+        let html;
+        const today = dayjs()
+        const deliveryDate = today.add(deliveryOption.time,'days').format('dddd MMMM D')
+
+        deliveryOption.forEach((option)=>{
+           html += ` 
+            <div class="optn">
+                        <input type="radio" name="${matchingProduct.id}">
+                        <div class="date">
+                            <p class="dt">${deliveryDate}</p>
+                            <p class="sc">${deliveryOption.price === 0? `FREE Shipping`:formatCurrency(deliveryOption.price)}</p>
+                        </div>
+                    </div>
+
+            `
+        })
+        console.log(deliveryDate)
+        return html
+        
+    }
 
     
 }
