@@ -2,7 +2,6 @@ import { cart, removeItem} from "../data/cart.js";
 import {product} from "../data/product.js";
 import { formatCurrency } from "../utils/money.js";
 import { deliveryOption } from "../data/deliveryOptions.js";
-import dayjs from "../utils/date.js";
 
 let itemContainer = document.querySelector(".items")
 let tot = document.querySelector("#total");
@@ -45,7 +44,7 @@ function renderItems(){
 
                 <div class="del-optn">
                     <p class="del-title">Choose a delivery option</p>
-                    ${delOptionHTML(matchingProduct)}
+                    ${delOptionHTML(matchingProduct,item)}
                 </div>
             </div>
         </div>
@@ -66,25 +65,27 @@ function renderItems(){
             console.log(cart)
         })
     })
-
-    function delOptionHTML(matchingProduct){
-        let html;
+   
+    function delOptionHTML(matchingProduct,item){
+         let html = '';
         const today = dayjs()
-        const deliveryDate = today.add(deliveryOption.time,'days').format('dddd MMMM D')
-
         deliveryOption.forEach((option)=>{
+            const isChecked = option.id === item.deliveryOptionId;
+        const deliveryDate = today.add(option.time,'days').format('dddd MMMM D')
            html += ` 
             <div class="optn">
-                        <input type="radio" name="${matchingProduct.id}">
+                        <input type="radio" name="${matchingProduct.id}"
+                        ${isChecked?'checked':''}
+                        >
                         <div class="date">
                             <p class="dt">${deliveryDate}</p>
-                            <p class="sc">${deliveryOption.price === 0? `FREE Shipping`:formatCurrency(deliveryOption.price)}</p>
+                            <p class="sc">${option.price === 0? `FREE Shipping`:`$${formatCurrency(option.price)} - Shipping`}</p>
                         </div>
                     </div>
 
             `
         })
-        console.log(deliveryDate)
+        console.log(html)
         return html
         
     }
