@@ -1,17 +1,17 @@
-export const deliveryOption = [
+const deliveryOptions = [
     {
         id:'0',
-        time:7,
+        date:7,
         price:0
     },
     {
         id:'1',
-        time:3,
-        price:499,
+        date:3,
+        price:499
     },
     {
         id:'2',
-        time:1,
-        price:999,
+        date:1,
+        price:999
     }
 ]
