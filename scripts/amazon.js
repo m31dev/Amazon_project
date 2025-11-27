@@ -5,6 +5,7 @@ import { formatCurrency } from "../utils/money.js"
 let cont = document.querySelector(".content")
 let quant = document.querySelector(".cart-count")
 
+
 renderData()
 
 function renderData(){
@@ -89,10 +90,9 @@ function addToCart(index,but){
 }
 
 function updateCart(){
-    let cartQuantity = 0;
+        let cartQuantity = 0 ;
         cart.forEach((item)=>{
             cartQuantity += item.quantity;
         })
-        console.log(cart)
-        quant.innerHTML = cartQuantity
+        quant.textContent = cartQuantity; 
 }

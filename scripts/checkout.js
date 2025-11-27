@@ -2,7 +2,14 @@ import { cart, removeItem} from "../data/cart.js";
 import {product} from "../data/product.js";
 import { formatCurrency } from "../utils/money.js";
 let itemContainer = document.querySelector(".items")
+let tot = document.querySelector("#total");
 
+
+let quantity = 0;
+cart.forEach((item)=>{
+    quantity += item.quantity;
+    tot.textContent = `${quantity} items`
+})
 
 renderItems()
 
