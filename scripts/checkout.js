@@ -1,4 +1,4 @@
-import { cart, removeItem} from "../data/cart.js";
+import { cart, removeItem,updateDelOption} from "../data/cart.js";
 import {product} from "../data/product.js";
 import { formatCurrency } from "../utils/money.js";
 let itemContainer = document.querySelector(".items")
@@ -11,14 +11,10 @@ cart.forEach((item)=>{
     tot.textContent = `${quantity} items`
 })
 
-function calcDelDays(delption){
-    const today = dayjs()
-    const deliveryDate = today.add(delption.date, 'days').format('dddd MMMM D')
-    return deliveryDate;
-}
+
+   
 
 renderItems()
-
 function renderItems(){
     let empt = ""
     cart.forEach((item)=>{
@@ -33,16 +29,20 @@ function renderItems(){
             }
        })
 
-        let deliveryOption;
-        deliveryOptions.forEach((del)=>{
-            if(del.id === item.deliveryOptionId){
-                deliveryOption = del;
-            }
-        })
+       const deliveryOptionId = item.deliveryOptionId;
+       let deliveryOption;
+       deliveryOptions.forEach((option)=>{
+        if(option.id === deliveryOptionId){
+            deliveryOption = option;
+        }
+       })
+
+        let today = dayjs()
+        let deliveryDate = today.add(deliveryOption.date, 'days').format('dddd MMMM D')
 
         empt+=`
          <div class="itm  item-${matchingProduct.id}">
-            <p class="d-date">Delivery date: ${calcDelDays(deliveryOption)}</p>
+            <p class="d-date">Delivery date: ${deliveryDate}</p>
             <div class="content">
                 <img src="${matchingProduct.image}">
                 <div class="details">
@@ -69,7 +69,7 @@ function renderItems(){
     const delBut = document.querySelectorAll("#delete")
     delBut.forEach((link)=>{
         link.addEventListener("click",()=>{
-            const productId = Number(link.dataset.productId);
+            const productId = link.dataset.productId;
             removeItem(productId)
 
            document.querySelector(`.item-${productId}`).remove()
@@ -81,13 +81,14 @@ function renderItems(){
         let html = '';
         deliveryOptions.forEach((deliveryOption)=>{
               const isChecked = deliveryOption.id == item.deliveryOptionId
-              
+        const today = dayjs()
+        const deliveryDate = today.add(deliveryOption.date, 'days').format('dddd MMMM D')
             
             html += `
-                 <div class="optn">
+                 <div class="optn" data-product-id="${matchingProduct.id}" data-delivery-option-id="${deliveryOption.id}">
                         <input type="radio" name="${matchingProduct.id}" ${isChecked?`checked`:``}>
                         <div class="date">
-                            <p class="dt">${calcDelDays(deliveryOption)}</p>
+                            <p class="dt">${deliveryDate}</p>
                             <p class="sc">${deliveryOption.price === 0?`FREE Shipping`:`$${deliveryOption.price} - Shipping`}</p>
                         </div>
                     </div>
@@ -95,6 +96,16 @@ function renderItems(){
         })
         return html;
     }
-    
+
+    document.querySelectorAll('.optn').forEach((element)=>{
+        const {productId,deliveryOptionId} = element.dataset;
+        element.addEventListener('click',()=>{
+            updateDelOption(productId,deliveryOptionId)
+            console.log(cart)
+        })
+    })
+
+   
 }
 
+ 

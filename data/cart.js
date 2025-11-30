@@ -1,22 +1,22 @@
 export let cart = JSON.parse(localStorage.getItem('cart')) ||
 [
     {
-        productId:0,
+        productId:'0',
         quantity:2,
         deliveryOptionId:'0'
     },
     
     {
-        productId:1,
+        productId:'1',
         quantity:1,
         deliveryOptionId:'1'
     }
 ]
 
-function updateDelOption(productId,deliveryOptionId){
+export function updateDelOption(productId,deliveryOptionId){
     let matchingItem;
     cart.forEach((item)=>{
-        if(productId === item.id){
+        if(productId === item.productId){
             matchingItem = item;
         }
     })

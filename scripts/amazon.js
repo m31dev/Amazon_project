@@ -60,7 +60,7 @@ function addToCart(index,but){
     let div = document.querySelectorAll(".prod")
     let adivs = div[index].querySelector(".alert")
     let selected = Number(div[index].querySelector(".select-quant").value)
-    const productId = Number(but.dataset.productId);
+    const productId = but.dataset.productId;
     
 
     let matchingItem;
