@@ -3,6 +3,7 @@ import {product} from "../data/product.js";
 import { formatCurrency } from "../utils/money.js";
 let itemContainer = document.querySelector(".items")
 let tot = document.querySelector("#total");
+import {deliveryOptions} from '../data/deliveryOptions.js'
 
 let quantity = 0;
 cart.forEach((item)=>{
@@ -25,7 +26,6 @@ function renderItems(){
             }
        })
 
-      
         empt+=`
          <div class="itm  item-${matchingProduct.id}">
             <p class="d-date">Delivery date:</p>
@@ -41,29 +41,7 @@ function renderItems(){
 
                 <div class="del-optn">
                     <p class="del-title">Choose a delivery option</p>
-                    <div class="optn">
-                        <input type="radio" name="${item.productId}" >
-                        <div class="date">
-                            <p class="dt">Monday December 1</p>
-                            <p class="sc">FREE Shipping</p>
-                        </div>
-                    </div>
-
-                    <div class="optn">
-                        <input type="radio" name="${item.productId}">
-                        <div class="date">
-                            <p class="dt">Monday December 1</p>
-                            <p class="sc">$4.99 - Shipping</p>
-                        </div>
-                    </div>
-
-                    <div class="optn">
-                        <input type="radio" name="${item.productId}">
-                        <div class="date">
-                            <p class="dt">Monday December 1</p>
-                            <p class="sc">$9.99 - Shipping</p>
-                        </div>
-                    </div>
+                    ${delOption(item,matchingProduct)}
                 </div>
             </div>
         </div>
@@ -85,14 +63,16 @@ function renderItems(){
     })
 
 
-    function delOption(){
+    function delOption(item,matchingProduct){
         let html = '';
         deliveryOptions.forEach((deliveryOption)=>{
+              const isChecked = deliveryOption.id == item.deliveryOptionId
+              
             const today = dayjs()
             const deliveryDate = today.add(deliveryOption.date, 'days').format('dddd MMMM D')
             html += `
                  <div class="optn">
-                        <input type="radio" name="${item.productId}" >
+                        <input type="radio" name="${matchingProduct.id}" ${isChecked?`checked`:``}>
                         <div class="date">
                             <p class="dt">${deliveryDate}</p>
                             <p class="sc">${deliveryOption.price === 0?`FREE Shipping`:`$${deliveryOption.price} - Shipping`}</p>
