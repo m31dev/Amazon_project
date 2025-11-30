@@ -11,11 +11,18 @@ cart.forEach((item)=>{
     tot.textContent = `${quantity} items`
 })
 
+function calcDelDays(delption){
+    const today = dayjs()
+    const deliveryDate = today.add(delption.date, 'days').format('dddd MMMM D')
+    return deliveryDate;
+}
+
 renderItems()
 
 function renderItems(){
     let empt = ""
     cart.forEach((item)=>{
+
         //Get the id of each item in the cart
        const itemId = item.productId;
         let matchingProduct;
@@ -26,9 +33,17 @@ function renderItems(){
             }
        })
 
+        let deliveryOption;
+        deliveryOptions.forEach((del)=>{
+            if(del.id === item.deliveryOptionId){
+                deliveryOption = del;
+            }
+        })
+        console.log(deliveryOption)
+
         empt+=`
          <div class="itm  item-${matchingProduct.id}">
-            <p class="d-date">Delivery date:</p>
+            <p class="d-date">Delivery date: ${calcDelDays(deliveryOption)}</p>
             <div class="content">
                 <img src="${matchingProduct.image}">
                 <div class="details">
@@ -68,13 +83,12 @@ function renderItems(){
         deliveryOptions.forEach((deliveryOption)=>{
               const isChecked = deliveryOption.id == item.deliveryOptionId
               
-            const today = dayjs()
-            const deliveryDate = today.add(deliveryOption.date, 'days').format('dddd MMMM D')
+            
             html += `
                  <div class="optn">
                         <input type="radio" name="${matchingProduct.id}" ${isChecked?`checked`:``}>
                         <div class="date">
-                            <p class="dt">${deliveryDate}</p>
+                            <p class="dt">${calcDelDays(deliveryOption)}</p>
                             <p class="sc">${deliveryOption.price === 0?`FREE Shipping`:`$${deliveryOption.price} - Shipping`}</p>
                         </div>
                     </div>
