@@ -89,7 +89,7 @@ function renderItems(){
                         <input type="radio" name="${matchingProduct.id}" ${isChecked?`checked`:``}>
                         <div class="date">
                             <p class="dt">${deliveryDate}</p>
-                            <p class="sc">${deliveryOption.price === 0?`FREE Shipping`:`$${deliveryOption.price} - Shipping`}</p>
+                            <p class="sc">${deliveryOption.price === 0?`FREE Shipping`:`$${formatCurrency(deliveryOption.price)} - Shipping`}</p>
                         </div>
                     </div>
             `
@@ -101,6 +101,7 @@ function renderItems(){
         const {productId,deliveryOptionId} = element.dataset;
         element.addEventListener('click',()=>{
             updateDelOption(productId,deliveryOptionId)
+            renderItems()
             console.log(cart)
         })
     })
