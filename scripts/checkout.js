@@ -39,7 +39,6 @@ function renderItems(){
                 deliveryOption = del;
             }
         })
-        console.log(deliveryOption)
 
         empt+=`
          <div class="itm  item-${matchingProduct.id}">

@@ -13,7 +13,16 @@ export let cart = JSON.parse(localStorage.getItem('cart')) ||
     }
 ]
 
-
+function updateDelOption(productId,deliveryOptionId){
+    let matchingItem;
+    cart.forEach((item)=>{
+        if(productId === item.id){
+            matchingItem = item;
+        }
+    })
+    matchingItem.deliveryOptionId = deliveryOptionId;
+    saveToStorage()
+}
 
 export function removeItem(prodId){
     const newCart = [];
