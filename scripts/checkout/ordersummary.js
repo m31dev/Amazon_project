@@ -47,7 +47,7 @@ export function renderItems(){
                        ${matchingProduct.name}
                     </p>
                     <p class="price">$${formatCurrency(matchingProduct.price)}</p>
-                    <p class="quantity"> Quantity:${item.quantity} <span class="bt">Update</span> <span class="bt" id="delete" data-product-id ="${matchingProduct.id}">Delete</span></p>
+                    <p class="quantity"> Quantity:${item.quantity} <span class="bt" id="update" data-product-id ="${matchingProduct.id}">Update</span> <span class="bt" id="delete" data-product-id ="${matchingProduct.id}">Delete</span></p>
                 </div>
 
                 <div class="del-optn">
@@ -71,6 +71,16 @@ export function renderItems(){
 
            document.querySelector(`.item-${productId}`).remove()
            renderPaymentSummary()
+        })
+    })
+
+    const updateQuant = document.querySelectorAll("#update");
+    updateQuant.forEach((up)=>{
+        up.addEventListener('click',()=>{
+            const productId = link.dataset.productId;
+
+            renderPaymentSummary()
+
         })
     })
 

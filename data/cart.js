@@ -35,6 +35,12 @@ export function removeItem(prodId){
     saveToStorage()
 }
 
+export function updateQuantity(prodId){
+    cart.forEach((cartItem)=>{
+        
+    })
+}
+
 export function saveToStorage(){
     localStorage.setItem('cart',JSON.stringify(cart))
 }
