@@ -6,7 +6,7 @@ export function renderPaymentSummary(){
     let total = 0;
     cart.forEach((item)=>{
         const product = getProduct(item.productId)
-        total += item.quantity * product.price
+        total += product.price * item.quantity;
        
     })
     total = formatCurrency(total)

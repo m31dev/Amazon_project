@@ -3,7 +3,7 @@ import {product} from "../../data/product.js";
 import { formatCurrency } from "../../utils/money.js";
 let itemContainer = document.querySelector(".items")
 let tot = document.querySelector("#total");
-import {deliveryOptions} from '../../data/deliveryOptions.js'
+import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js'
 
 let quantity = 0;
 cart.forEach((item)=>{
@@ -30,12 +30,7 @@ export function renderItems(){
        })
 
        const deliveryOptionId = item.deliveryOptionId;
-       let deliveryOption;
-       deliveryOptions.forEach((option)=>{
-        if(option.id === deliveryOptionId){
-            deliveryOption = option;
-        }
-       })
+       const deliveryOption = getDeliveryOption(deliveryOptionId)
 
         let today = dayjs()
         let deliveryDate = today.add(deliveryOption.date, 'days').format('dddd MMMM D')
