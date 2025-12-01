@@ -4,6 +4,7 @@ import { formatCurrency } from "../../utils/money.js";
 let itemContainer = document.querySelector(".items")
 let tot = document.querySelector("#total");
 import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js'
+import { renderPaymentSummary } from "./paymentsummary.js";
 
 let quantity = 0;
 cart.forEach((item)=>{
@@ -69,6 +70,7 @@ export function renderItems(){
             removeItem(productId)
 
            document.querySelector(`.item-${productId}`).remove()
+           renderPaymentSummary()
         })
     })
 
@@ -98,6 +100,7 @@ export function renderItems(){
         element.addEventListener('click',()=>{
             updateDelOption(productId,deliveryOptionId)
             renderItems()
+            renderPaymentSummary()
             console.log(cart)
         })
     })
