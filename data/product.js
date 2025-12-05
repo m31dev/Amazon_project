@@ -30,6 +30,22 @@ class Product{
     
 }
 
+class Clothing extends Product{
+
+}
+
+const tshirt = new Clothing( {
+        id:'0',
+        name:"Black and Gray Athletic Cotton Socks - 6 Pairs",
+        image:"images/athletic-cotton-socks-6-pairs.jpg",
+        rating:{
+            stars:4.5,
+            count: 87,
+        },
+        price: 1090,
+    })
+
+    console.log(tshirt)
 
 export const product = [
     {
