@@ -1,11 +1,11 @@
 //Cart class for generating object
 class Cart{
-    cartItems = undefined;
-    localStorageKey = undefined;
+    cartItems;
+    localStorageKey;
 
-    constructor(cartItems, localStorageKey){
-        this.cartItems = cartItems
+    constructor(localStorageKey){
         this.localStorageKey = localStorageKey;
+        this.loadFromLocalStorage(localStorageKey)
     }
 
     //Methods
@@ -55,7 +55,5 @@ class Cart{
 
 const cart = new Cart('cart-oop')
 const business = new Cart('business');
-cart.loadFromLocalStorage()
-business.loadFromLocalStorage()
 
 console.log(cart)
