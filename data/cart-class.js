@@ -1,10 +1,11 @@
 //Cart class for generating object
 class Cart{
     cartItems;
-    localStorageKey;
+    #localStorageKey;
+    
 
     constructor(localStorageKey){
-        this.localStorageKey = localStorageKey;
+        this.#localStorageKey = localStorageKey;
         this.loadFromLocalStorage(localStorageKey)
     }
 
@@ -26,7 +27,7 @@ class Cart{
     }
 
     saveToStorage(){
-    localStorage.setItem(this.localStorageKey,JSON.stringify(this.cartItems))
+    localStorage.setItem(this.#localStorageKey,JSON.stringify(this.cartItems))
     }
 
     updateDelOption(productId,deliveryOptionId){
