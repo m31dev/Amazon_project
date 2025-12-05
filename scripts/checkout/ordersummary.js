@@ -74,17 +74,6 @@ export function renderItems(){
         })
     })
 
-    const updateQuant = document.querySelectorAll("#update");
-    updateQuant.forEach((up)=>{
-        up.addEventListener('click',()=>{
-            const productId = link.dataset.productId;
-
-            renderPaymentSummary()
-
-        })
-    })
-
-
     function delOption(item,matchingProduct){
         let html = '';
         deliveryOptions.forEach((deliveryOption)=>{

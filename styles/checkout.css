@@ -184,3 +184,7 @@ input{
 .sc{
     color:gray
 }
+
+#quantselector{
+    width:20px;
+}
