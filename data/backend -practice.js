@@ -1,2 +1,3 @@
 new XMLHttpRequest();
-XPathResult.open('GET',)
+xhr.open('GET','https://supersimplebackend.dev')
+xhr.send();
