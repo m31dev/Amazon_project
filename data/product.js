@@ -9,6 +9,23 @@ export function getProduct(productId){
     return matchingProduct;
 }
 
+class Product{
+    id;
+    name;
+    image;
+    rating;
+    price;
+
+    constructor(productDetails){
+        this.id = productDetails.id;
+        this.name = productDetails.name;
+        this.image = productDetails.image;
+        this.rating = productDetails.rating;
+        this.price = productDetails.price
+    }
+}
+
+
 export const product = [
     {
         id:'0',
@@ -132,4 +149,8 @@ export const product = [
     },
 
 
-]
+].map((productDetails)=>{
+    return new Product(productDetails)
+})
+console.log(product)
+
