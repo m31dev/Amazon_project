@@ -1,4 +1,3 @@
-
 export function getProduct(productId){
     let matchingProduct;
     product.forEach((prod)=>{
@@ -23,6 +22,12 @@ class Product{
         this.rating = productDetails.rating;
         this.price = productDetails.price
     }
+
+    getStarUrl(){
+        return `images/rating-${this.rating.stars*10}.png" class="rating`
+    }
+
+    
 }
 
 

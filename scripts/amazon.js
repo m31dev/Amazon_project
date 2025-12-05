@@ -19,7 +19,7 @@ function renderData(){
             <div class="bot">
             <p class="prod-name">${name}</p>
             <div class="rr">
-            <img src="images/rating-${rating.stars*10}.png" class="rating">
+            <img src="${element.getStarUrl()}" class="rating">
             <p class="reviews">${rating.count}</p>
             </div>
             <p class="prod-price">$${formatCurrency(price)}</p>
